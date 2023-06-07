@@ -16,8 +16,8 @@ func setupServer(mux *http.ServeMux) http.Handler {
 func main() {
 	listenAddr := os.Getenv("LISTEN_ADDR")
 	if len(listenAddr) == 0 {
-		// Set go_api's port 8080
-		listenAddr = ":8080"
+		// Set go_api's port 8000
+		listenAddr = ":8000"
 	}
 
 	mux := http.NewServeMux()

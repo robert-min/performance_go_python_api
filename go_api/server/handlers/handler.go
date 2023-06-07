@@ -41,7 +41,7 @@ func getMovieHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
-	url := "localhost:8080/search" // change server url
+	url := "http://localhost:8080/search" // change server url
 	packages, err := patchData(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusNotFound)
