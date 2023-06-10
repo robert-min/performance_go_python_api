@@ -24,16 +24,16 @@ func patchData(url string) ([]pkgData, error) {
 	}
 	defer resp.Body.Close()
 
-	if resp.Header.Get("Content-Type") != "application/json" {
-		return packages, nil
-	}
 	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return packages, err
 	}
 
 	err = json.Unmarshal(data, &packages)
-	return packages, err
+	if err != nil {
+		return packages, err
+	}
+	return packages, nil
 }
 
 // getMovieHandler marshal movie data
@@ -41,15 +41,13 @@ func getMovieHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
-	url := "http://localhost:8080/search" // change server url
+	url := "http://go_api_db:8080/search" // change server url
 	packages, err := patchData(url)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusNotFound)
 	}
 
-	jsonData, err := json.Marshal(packages)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusNotFound)
-	}
+	jsonData, _ := json.Marshal(packages)
+
 	fmt.Fprintf(w, string(jsonData))
 }
