@@ -8,7 +8,7 @@ import (
 )
 
 type pkgData struct {
-	UserId    string `json:"name"`
+	Name      string `json:"name"`
 	MovieId   string `json:"movieId"`
 	Rating    string `json:"rating"`
 	TimeStamp string `json:"timestamp"`
