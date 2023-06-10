@@ -1,0 +1,23 @@
+import os
+import sys
+import json
+
+lib_path = os.path.abspath(os.path.join(__file__, os.path.pardir))
+backend_path = os.path.abspath(os.path.join(lib_path, os.path.pardir))
+conf_path = os.path.abspath(os.path.join(backend_path, "conf"))
+conf_file = os.path.abspath(os.path.join(conf_path, "conf.json"))
+
+if lib_path not in sys.path:
+    sys.path.append(lib_path)
+
+if backend_path not in sys.path:
+    sys.path.append(backend_path)
+
+if conf_path not in sys.path_hooks:
+    sys.path.append(conf_path)
+
+# DB conf setting
+with open(conf_file, "rt") as f:
+    conf = json.load(f)
+
+DB_CONNECTION = conf["db_connection"]
