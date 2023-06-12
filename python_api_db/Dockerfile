@@ -23,7 +23,7 @@ ENV PATH ${CONDA_DIR}/bin:${PATH}
 SHELL ["/bin/bash", "-c"]
 RUN mkdir /home/user
 ENV HOME_PATH=/home/user
-ARG APP_NAME=python_api_db
+ARG APP_NAME=python_api
 ARG MODULE_PATH=${HOME_PATH}/${APP_NAME}
 WORKDIR ${MODULE_PATH}
 
