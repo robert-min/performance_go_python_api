@@ -1,8 +1,16 @@
-module github.com/robert-min/performance_go_python_api/go_gin
+module github.com/robert-min/performance_go_python_api/go_gin_db/server
 
 go 1.19
 
-require github.com/gin-gonic/gin v1.9.1
+replace github.com/robert-min/performance_go_python_api/go_gin_db/server/handler => ./handler
+
+replace github.com/robert-min/performance_go_python_api/go_gin_db/server/lib => ./lib
+
+require (
+	github.com/gin-gonic/gin v1.9.1
+	github.com/go-sql-driver/mysql v1.7.1
+	github.com/robert-min/performance_go_python_api/go_api_db/server v0.0.0-20230612121909-acb911cf572f
+)
 
 require (
 	github.com/bytedance/sonic v1.9.1 // indirect
